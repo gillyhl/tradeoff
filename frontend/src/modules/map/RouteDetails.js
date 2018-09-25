@@ -2,16 +2,22 @@ import React from 'react'
 
 class RouteDetails extends React.Component {
 
-  async handleSubmit(e) {
+  handleSubmit(e) {
 
     e.preventDefault()
     console.log(this.origin.value)
     const origin = encodeURI(this.origin.value)
     const destination = encodeURI(this.destination.value)
-    const url = `http://localhost:3000/directions?origin=${origin}&destination=${destination}`
 
-    const response = await fetch(url)
-    console.log(await response.json())
+    const modes = ['driving', 'walking', 'transit', 'bicycling']
+    modes.map(async mode => {
+
+      const url = `http://localhost:3000/directions?origin=${origin}&destination=${destination}&mode=${mode}`
+
+      const response = await fetch(url)
+      console.log(await response.json())
+    })
+
 
   }
 
