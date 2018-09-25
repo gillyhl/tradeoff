@@ -3,7 +3,7 @@ import RouteResult from './RouteResult'
 
 const RouteResultList = ({ results }) => {
   return <div>
-    {results.map(result => <RouteResult {...result} />)}
+    {results.map(result => <RouteResult {...result} key={result.id} />)}
   </div>
 }
 

@@ -4,6 +4,6 @@ header {
   position: absolute;
   z-index: 1001;
   width: 100vw;
-
+  height: 100px;
   color: rgba(240, 240, 240, 1);
 }
