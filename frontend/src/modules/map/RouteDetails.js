@@ -11,7 +11,7 @@ class RouteDetails extends React.Component {
     const url = `http://localhost:3000/directions?origin=${origin}&destination=${destination}`
 
     const response = await fetch(url)
-    console.log(response)
+    console.log(await response.json())
 
   }
 

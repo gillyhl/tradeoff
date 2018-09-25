@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var axios = require('axios');
 
 var app = express();
 
@@ -13,9 +14,9 @@ app.get('/directions', async (request, response) => {
 
   const {origin, destination}=request.query
   const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=AIzaSyAWGw_OqX8KLR5HWQS7aryq9CVRdDw_BR4`;
-  const results = await fetch(url)
+  const {data} = await axios.get(url)
 
-  response.json({results})
+  response.json(data)
 
 })
 
