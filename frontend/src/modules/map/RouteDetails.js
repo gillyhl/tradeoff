@@ -1,4 +1,5 @@
 import React from 'react'
+import './route-details.css'
 
 class RouteDetails extends React.Component {
 
@@ -17,8 +18,6 @@ class RouteDetails extends React.Component {
       const response = await fetch(url)
       console.log(await response.json())
     })
-
-
   }
 
   render() {

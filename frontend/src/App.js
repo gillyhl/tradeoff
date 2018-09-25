@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import Map from './modules/map/Map'
-import RouteDetails from './modules/map/RouteDetails'
+import Header from './modules/layout/Header'
 class App extends Component {
   render() {
     return (
-<div>
-<RouteDetails>
-
-</RouteDetails>
-      <Map />
+      <div>
+        <Header />
+        <Map />
       </div>
     );
   }
