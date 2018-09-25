@@ -1,7 +1,8 @@
 section.sidebar {
   position: absolute;
-  height: 100vh;
+  height: calc(100vh - 132px);
   width: 20%;
+  min-width: 200px;
   z-index: 1001;
   color: rgba(240, 240, 240, 1);
   background-color: rgba(33, 33, 33, 0.8);

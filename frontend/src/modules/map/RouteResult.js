@@ -1,4 +1,5 @@
 import React from 'react'
+import './routeresult.css'
 
 const RouteResult = ({ duration, mode, distance, cost, calories }) => {
   return <section>
