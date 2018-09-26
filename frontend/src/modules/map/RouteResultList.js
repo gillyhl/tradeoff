@@ -7,4 +7,8 @@ const RouteResultList = ({ results }) => {
   </div>
 }
 
+RouteResultList.defaultProps = {
+  results: []
+}
+
 export default RouteResultList
