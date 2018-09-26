@@ -24,16 +24,13 @@ const results = [
 
 const StyledSidebar = styled.section`
   position: absolute;
-  height: calc(100vh - ${size.headerHeight} - ${size.padding} - ${size.padding});
-  max-height: calc(100vh - ${size.headerHeight} - ${size.padding} - ${size.padding});
+  height: 100vh;
   overflow-y: auto;
   width: 20%;
   min-width: 200px;
   z-index: 1001;
   color: ${color.text};
   background-color: ${color.background};
-  top: calc(${size.headerHeight} + ${size.padding} + ${size.padding});
-
 `
 
 const Sidebar = () =>

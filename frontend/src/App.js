@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Map from './modules/map/Map'
-import Header from './modules/layout/Header'
+import Main from './modules/layout/Main'
 import Sidebar from './modules/layout/Sidebar'
 import RouteResultsContext from './RouteResultsContext'
 
@@ -39,7 +39,7 @@ class App extends Component {
         addRouteResult: this.addRouteResult,
         clearRouteResults: this.clearRouteResults
       }}>
-        <Header />
+        <Main />
         <Sidebar />
         <Map />
       </RouteResultsContext.Provider>

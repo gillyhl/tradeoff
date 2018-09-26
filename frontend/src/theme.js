@@ -4,6 +4,6 @@ export const color = {
 }
 
 export const size = {
-  headerHeight: '100px',
+  sidebarWidth: '20%',
   padding: '1em'
 }
