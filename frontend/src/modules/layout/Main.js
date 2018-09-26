@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { color, size } from '../../theme'
 import RouteDetails from '../map/RouteDetails'
 import withRouteResultsContext from '../../withRouteResultsContext'
+import RouteInsights from '../insights/RouteInsights'
 
 const StyledWrapper = styled.section`
   background-color: ${color.background};
@@ -16,9 +17,10 @@ const StyledWrapper = styled.section`
 `
 
 const Main = ({context}) =>
-      <StyledWrapper>
-        {!context.routeResults.length === 0 && <RouteDetails />}
-        {context.routeResults.length === 0 && <RouteDetails />}
+    <StyledWrapper>
+        {context.routeResults.length === 0 ?
+           <RouteDetails />
+          :<RouteInsights />}
       </StyledWrapper>
 
 export default withRouteResultsContext (Main)
