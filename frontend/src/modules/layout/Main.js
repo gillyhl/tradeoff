@@ -6,7 +6,7 @@ import withRouteResultsContext from '../../withRouteResultsContext'
 import RouteInsights from '../insights/RouteInsights'
 
 const StyledWrapper = styled.section`
-  background-color: ${color.background};
+  background-color: ${color.darkBackground};
   padding: ${size.padding};
   margin-left: ${size.sidebarWidth}
   position: absolute;
@@ -16,11 +16,11 @@ const StyledWrapper = styled.section`
   color: ${color.text};
 `
 
-const Main = ({context}) =>
-    <StyledWrapper>
-        {context.routeResults.length === 0 ?
-           <RouteDetails />
-          :<RouteInsights />}
-      </StyledWrapper>
+const Main = ({ context }) =>
+  <StyledWrapper>
+    {context.routeResults.length === 0 ?
+      <RouteDetails /> :
+      <RouteInsights />}
+  </StyledWrapper>
 
-export default withRouteResultsContext (Main)
+export default withRouteResultsContext(Main)

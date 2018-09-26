@@ -4,8 +4,7 @@ import Map from './modules/map/Map'
 import Main from './modules/layout/Main'
 import Sidebar from './modules/layout/Sidebar'
 import RouteResultsContext from './RouteResultsContext'
-import addSeconds from 'date-fns/add_seconds'
-import distanceInWords from 'date-fns/distance_in_words'
+import { timeInsights } from './services/timeInsightService'
 
 class App extends Component {
 
@@ -20,28 +19,6 @@ class App extends Component {
           routeResult
         ]
       })
-    }
-
-    const timeInsights = (comparators) => {
-      const sortTime = (a,b) => b.duration.value - a.duration.value
-      return comparators
-        .sort(sortTime)
-        .map((comparator, i, array) => array.filter(x => x.mode !== comparator.mode)
-          .map(comparatorInsight => {
-            const deltaInSeconds = (comparatorInsight.duration.value - comparator.duration.value) * 228 * 2
-            const startDate = new Date()
-            startDate.setHours(0,0,0,0);
-            const endDate = addSeconds(startDate, deltaInSeconds);
-
-            const timeString = distanceInWords(startDate, endDate)
-            const isFaster = deltaInSeconds > 0
-
-            return isFaster && `${comparator.mode} will ${isFaster ? 'save' : 'cost'} you ${timeString} in comparison to ${comparatorInsight.mode}`
-          }))
-          .reduce((acc, curr) => [ ...acc, ...curr], [])
-          .filter(
-            x => x
-          )
     }
 
     this.toggleComparator = comparator => {

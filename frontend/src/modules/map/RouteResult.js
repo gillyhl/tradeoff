@@ -7,7 +7,8 @@ const RouteResultButton = styled.section`
 
   ul {
     list-style: none;
-    padding: 0.5em;
+    padding: 1em;
+    margin: 0;
     transition: 0.4s background;
     cursor: pointer;
     position: relative;
@@ -19,7 +20,7 @@ const RouteResultButton = styled.section`
       font-size: 3rem;
       float: right;
       position: absolute;
-      line-height: 13rem;
+      line-height: 15rem;
       top: 0;
       right: 1rem;
     }
