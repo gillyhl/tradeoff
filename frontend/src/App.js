@@ -20,13 +20,20 @@ class App extends Component {
       })
     }
 
-    this.addComparator = comparator => {
-      this.setState({
-        comparators: [
-          ...this.state.comparators,
-          comparator
-        ]
-      })
+    this.toggleComparator = comparator => {
+      const exists = this.state.comparators.find(comparatorItem => comparatorItem.mode === comparator.mode)
+      if (exists) {
+        this.setState({
+          comparators: this.state.comparators.filter(x => x.mode !== comparator.mode)
+        })
+      } else {
+        this.setState({
+          comparators: [
+            ...this.state.comparators,
+            comparator
+          ]
+        })
+      }
     }
 
     this.clearRouteResults = () => {
@@ -39,7 +46,7 @@ class App extends Component {
     this.state = {
       routeResults: [],
       comparators: [],
-      addComparator: this.addComparator,
+      toggleComparator: this.toggleComparator,
       addRouteResult: this.addRouteResult,
       clearRouteResults: this.clearRouteResults
     }

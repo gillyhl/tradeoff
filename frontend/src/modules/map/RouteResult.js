@@ -37,7 +37,7 @@ const RouteResultButton = styled.section`
 
 const RouteResult = ({ ...rest, context }) => {
   const routeResultClickHandler = e => {
-    context.addComparator({...rest})
+    context.toggleComparator({...rest})
   }
 
   return <RouteResultButton onClick={routeResultClickHandler}>
