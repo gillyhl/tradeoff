@@ -12,10 +12,11 @@ const RouteResultButton = styled.section`
     cursor: pointer;
     position: relative;
     height: 10rem;
+    background-color: ${props => props.isSelected ? color.hover : 'inherit'};
 
     ::after {
-      content: '+';
-      font-size: 4rem;
+      content: ${props => props.isSelected ? '\'➖\'' : '\'➕\''};
+      font-size: 3rem;
       float: right;
       position: absolute;
       line-height: 10rem;
@@ -40,7 +41,9 @@ const RouteResult = ({ ...rest, context }) => {
     context.toggleComparator({...rest})
   }
 
-  return <RouteResultButton onClick={routeResultClickHandler}>
+  const isSelected = !!context.comparators.find(comparator => comparator.mode === rest.mode)
+
+  return <RouteResultButton onClick={routeResultClickHandler} isSelected={isSelected}>
     <ul>
       <li><strong>Mode:</strong> {rest.mode}</li>
       <li><strong>Duration:</strong> {rest.duration}</li>
