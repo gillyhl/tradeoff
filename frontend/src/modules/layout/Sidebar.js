@@ -26,7 +26,7 @@ const StyledSidebar = styled.section`
   position: absolute;
   height: calc(100vh - ${size.headerHeight} - ${size.padding} - ${size.padding});
   max-height: calc(100vh - ${size.headerHeight} - ${size.padding} - ${size.padding});
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 20%;
   min-width: 200px;
   z-index: 1001;
