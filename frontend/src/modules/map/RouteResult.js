@@ -36,9 +36,9 @@ const RouteResultButton = styled.section`
 
 `
 const StyledEmoji=styled.li`
-font-size: 2rem;
+  font-size: 2rem;
 `
-const modeEmoji={
+const modeEmoji = {
   driving:"🚗",
   walking:"👣",
   bicycling:"🚴",

@@ -27,7 +27,7 @@ const StyledSidebar = styled.section`
   height: 100vh;
   overflow-y: auto;
   width: 20%;
-  min-width: 200px;
+  min-width: ${size.sidebarWidth};
   z-index: 1001;
   color: ${color.text};
   background-color: ${color.background};

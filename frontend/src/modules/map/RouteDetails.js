@@ -1,6 +1,29 @@
 import React from 'react'
-import './route-details.css'
+import styled from 'styled-components'
 import withRouteResultsContext from '../../withRouteResultsContext'
+import { color } from '../../theme'
+
+const StyledRouteDetails = styled.form`
+  h1 {
+    padding: 0;
+    margin: 0;
+  }
+
+  input {
+    margin: 0.5em 1em;
+    padding: 0.5em;
+
+  }
+
+  button {
+    padding: 0.6em;
+    background-color: ${color.yellow};
+    border: none;
+    font-weight: bolder;
+    width: 100px;
+  }
+`
+
 
 class RouteDetails extends React.Component {
 
@@ -25,14 +48,14 @@ class RouteDetails extends React.Component {
   }
 
   render() {
-    return <form onSubmit={e => this.handleSubmit(e)}>
+    return <StyledRouteDetails onSubmit={e => this.handleSubmit(e)}>
         <h1>Where would you like to go?</h1>
         <label htmlFor="origin">Origin</label>
         <input id="origin" ref={origin=>this.origin=origin} type='text' defaultValue='bs3 5ed'></input>
         <label htmlFor="destination">Destination</label>
         <input id="destination" ref={destination=>this.destination=destination} type='text' defaultValue='ba1 2el'></input>
         <button>Go</button>
-      </form>
+      </StyledRouteDetails>
   }
 }
 
