@@ -23,6 +23,10 @@ const RouteInsights = ({ context: { comparators, insights } }) => {
     <ul>
       {insights.cost.map(i => <li key={i}>{i}</li>)}
     </ul>
+    <h1>Environmental Insights</h1>
+    <ul>
+      {insights.co2.map(i => <li key={i}>{i}</li>)}
+    </ul>
   </StyledInsightContainer>
 }
 

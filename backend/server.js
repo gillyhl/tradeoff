@@ -19,6 +19,13 @@ const CALORIES_PER_KM = {
   bicycling: 150
 }
 
+const CO2_PER_KM = {
+  driving: 0.257,
+  walking: 0,
+  transit: 0.0602,
+  bicycling: 0
+}
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -38,7 +45,8 @@ app.get('/directions', async (request, response) => {
       mode,
       duration: leg.duration,
       cost: Math.round((leg.distance.value / 1000) * PENCE_PER_KM[mode]),
-      calories: Math.round((leg.distance.value / 1000) * CALORIES_PER_KM[mode])
+      calories: Math.round((leg.distance.value / 1000) * CALORIES_PER_KM[mode]),
+      co2: (leg.distance.value / 1000) * CO2_PER_KM[mode]
     }
   }
 
