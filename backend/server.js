@@ -1,9 +1,11 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var axios = require('axios');
+var express = require('express')
+var path = require('path')
+var cookieParser = require('cookie-parser')
+var axios = require('axios')
 
-var app = express();
+require('dotenv').config()
+
+var app = express()
 
 const PENCE_PER_KM = {
   driving: 25,
@@ -34,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/directions', async (request, response) => {
 
   const { origin, destination, mode } = request.query
-  const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${mode}&key=AIzaSyAWGw_OqX8KLR5HWQS7aryq9CVRdDw_BR4&alternatives=true`;
+  const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${mode}&key=${process.env.GOOGLE_API_KEY}&alternatives=true`;
   const { data } = await axios.get(url)
 
   const parseRouteResult = routeResult => {
