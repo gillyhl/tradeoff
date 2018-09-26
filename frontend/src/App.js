@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import Map from './modules/map/Map'
 import Main from './modules/layout/Main'
 import Sidebar from './modules/layout/Sidebar'
@@ -11,26 +11,22 @@ import { co2Insights } from './services/co2InsightService'
 const WORKING_DAYS_PER_YEAR = 228
 
 class App extends Component {
-
   constructor(props) {
-
     super(props)
 
-    this.addRouteResult = (routeResult) => {
+    this.addRouteResult = routeResult => {
       this.setState({
-        routeResults: [
-          ...this.state.routeResults,
-          routeResult
-        ]
+        routeResults: [...this.state.routeResults, routeResult]
       })
     }
 
     this.toggleComparator = comparator => {
-      const exists = this.state.comparators.find(comparatorItem => comparatorItem.mode === comparator.mode)
-      const comparators = exists ? this.state.comparators.filter(x => x.mode !== comparator.mode) : [
-        ...this.state.comparators,
-        comparator
-      ]
+      const exists = this.state.comparators.find(
+        comparatorItem => comparatorItem.mode === comparator.mode
+      )
+      const comparators = exists
+        ? this.state.comparators.filter(x => x.mode !== comparator.mode)
+        : [...this.state.comparators, comparator]
       this.setState({
         comparators,
         insights: {
@@ -57,7 +53,6 @@ class App extends Component {
       addRouteResult: this.addRouteResult,
       clearRouteResults: this.clearRouteResults
     }
-
   }
 
   render() {
@@ -71,4 +66,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
