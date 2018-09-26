@@ -28,8 +28,7 @@ class App extends Component {
         .sort(sortTime)
         .map((comparator, i, array) => array.filter(x => x.mode !== comparator.mode)
           .map(comparatorInsight => {
-            const deltaInSeconds = (comparatorInsight.duration.value - comparator.duration.value) * 228
-
+            const deltaInSeconds = (comparatorInsight.duration.value - comparator.duration.value) * 228 * 2
             const startDate = new Date()
             startDate.setHours(0,0,0,0);
             const endDate = addSeconds(startDate, deltaInSeconds);
@@ -37,9 +36,12 @@ class App extends Component {
             const timeString = distanceInWords(startDate, endDate)
             const isFaster = deltaInSeconds > 0
 
-            return `${comparator.mode} will ${isFaster ? 'save' : 'cost'} you ${timeString} in comparison to ${comparatorInsight.mode}`
+            return isFaster && `${comparator.mode} will ${isFaster ? 'save' : 'cost'} you ${timeString} in comparison to ${comparatorInsight.mode}`
           }))
           .reduce((acc, curr) => [ ...acc, ...curr], [])
+          .filter(
+            x => x
+          )
     }
 
     this.toggleComparator = comparator => {

@@ -11,7 +11,7 @@ const RouteResultButton = styled.section`
     transition: 0.4s background;
     cursor: pointer;
     position: relative;
-    height: 10rem;
+    height: 13rem;
     background-color: ${props => props.isSelected ? color.hover : 'inherit'};
 
     ::after {
@@ -19,7 +19,7 @@ const RouteResultButton = styled.section`
       font-size: 3rem;
       float: right;
       position: absolute;
-      line-height: 10rem;
+      line-height: 13rem;
       top: 0;
       right: 1rem;
     }
@@ -35,6 +35,15 @@ const RouteResultButton = styled.section`
 
 
 `
+const StyledEmoji=styled.li`
+font-size: 2rem;
+`
+const modeEmoji={
+  driving:"🚗",
+  walking:"👣",
+  bicycling:"🚴",
+  transit:"🚅"
+}
 
 const RouteResult = ({ ...rest, context }) => {
   const routeResultClickHandler = e => {
@@ -45,7 +54,7 @@ const RouteResult = ({ ...rest, context }) => {
 
   return <RouteResultButton onClick={routeResultClickHandler} isSelected={isSelected}>
     <ul>
-      <li><strong>Mode:</strong> {rest.mode}</li>
+      <StyledEmoji>{modeEmoji[rest.mode]}</StyledEmoji>
       <li><strong>Duration:</strong> {rest.duration.text}</li>
       <li><strong>Distance:</strong> {rest.distance.text}</li>
       <li><strong>Cost:</strong> &pound;{rest.cost / 100}</li>
