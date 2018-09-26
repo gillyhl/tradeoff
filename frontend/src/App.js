@@ -3,36 +3,47 @@ import './App.css';
 import Map from './modules/map/Map'
 import Header from './modules/layout/Header'
 import Sidebar from './modules/layout/Sidebar'
-import RouteReseultsContext from './RouteResultsContext'
+import RouteResultsContext from './RouteResultsContext'
 
 class App extends Component {
-  constructor(props){
+
+  constructor(props) {
+
     super(props)
-    this.state={
+
+    this.addRouteResult = (routeResult) => {
+      this.setState({
+        routeResults: [
+          ...this.state.routeResults,
+          routeResult
+        ]
+      })
+    }
+
+    this.clearRouteResults = () => {
+      this.setState({
+        routeResults: []
+      })
+    }
+
+    this.state = {
       routeResults: []
     }
-  }
 
-  addRouteResult(routeResult){
-    this.setState({
-      routeResults:[
-        ...this.state.routeResults,
-        routeResult
-      ]
-    })
   }
-
 
   render() {
     return (
-      <RoutesResultsContext.Provider value={{
-        results:this.state.routeResults
-      }} >
+      <RouteResultsContext.Provider value={{
+        results: this.state.routeResults,
+        addRouteResult: this.addRouteResult,
+        clearRouteResults: this.clearRouteResults
+      }}>
         <Header />
         <Sidebar />
         <Map />
-      </RoutesResultsContext.Provider>
-    );
+      </RouteResultsContext.Provider>
+    )
   }
 }
 

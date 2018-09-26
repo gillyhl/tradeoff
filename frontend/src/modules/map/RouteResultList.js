@@ -1,14 +1,13 @@
 import React from 'react'
 import RouteResult from './RouteResult'
+import RouteResultsContext from '../../RouteResultsContext'
 
-const RouteResultList = ({ results }) => {
-  return <div>
-    {results.map(result => <RouteResult {...result} key={result.id} />)}
-  </div>
-}
-
-RouteResultList.defaultProps = {
-  results: []
+const RouteResultList = () => {
+  return <RouteResultsContext.Consumer>
+    {({ results }) => (
+      results && results.map((result, i) => { console.log(result); return <RouteResult {...result} key={i} />})
+    )}
+    </RouteResultsContext.Consumer>
 }
 
 export default RouteResultList
