@@ -1,13 +1,11 @@
 import React from 'react'
 import RouteResult from './RouteResult'
-import RouteResultsContext from '../../RouteResultsContext'
+import withRouteResultsContext from '../../withRouteResultsContext'
 
-const RouteResultList = () => {
-  return <RouteResultsContext.Consumer>
-    {({ results }) => (
-      results && results.map((result, i) => { console.log(result); return <RouteResult {...result} key={i} />})
-    )}
-    </RouteResultsContext.Consumer>
+const RouteResultList = ({ context }) => {
+  return <div>
+      {context.results && context.results.map((result, i) => <RouteResult {...result} key={i} />)}
+    </div>
 }
 
-export default RouteResultList
+export default withRouteResultsContext(RouteResultList)

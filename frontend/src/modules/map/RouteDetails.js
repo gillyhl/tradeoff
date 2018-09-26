@@ -1,10 +1,11 @@
 import React from 'react'
-import RouteResultsContext from '../../RouteResultsContext'
 import './route-details.css'
+import withRouteResultsContext from '../../withRouteResultsContext'
 
 class RouteDetails extends React.Component {
 
-  handleSubmit(e, addRouteResult, clearRouteResults) {
+  handleSubmit(e) {
+    const { addRouteResult, clearRouteResults } = this.props.context
 
     e.preventDefault()
     const origin = encodeURI(this.origin.value)
@@ -24,22 +25,17 @@ class RouteDetails extends React.Component {
   }
 
   render() {
-    return <RouteResultsContext.Consumer>
-      {({ addRouteResult, clearRouteResults }) => (
-        <form onSubmit={e => this.handleSubmit(e, addRouteResult, clearRouteResults)}>
-          <h1>Where would you like to go?</h1>
-          <label htmlFor="origin">Origin</label>
-          <input id="origin" ref={origin=>this.origin=origin} type='text' defaultValue='ba2 3dq'></input>
-          <label htmlFor="destination">Destination</label>
-          <input id="destination" ref={destination=>this.destination=destination} type='text' defaultValue='ba1 2el'></input>
-          <button>Go</button>
-        </form>
-      )}
-    </RouteResultsContext.Consumer>
+    return <form onSubmit={e => this.handleSubmit(e)}>
+        <h1>Where would you like to go?</h1>
+        <label htmlFor="origin">Origin</label>
+        <input id="origin" ref={origin=>this.origin=origin} type='text' defaultValue='ba2 3dq'></input>
+        <label htmlFor="destination">Destination</label>
+        <input id="destination" ref={destination=>this.destination=destination} type='text' defaultValue='ba1 2el'></input>
+        <button>Go</button>
+      </form>
   }
-
 }
 
 
 
-export default RouteDetails
+export default withRouteResultsContext(RouteDetails)
