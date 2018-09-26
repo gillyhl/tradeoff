@@ -34,9 +34,9 @@ app.get('/directions', async (request, response) => {
     const route = routeResult.routes[0]
     const leg = route.legs[0]
     return {
-      distance: leg.distance.text,
+      distance: leg.distance,
       mode,
-      duration: leg.duration.text,
+      duration: leg.duration,
       cost: Math.round((leg.distance.value / 1000) * PENCE_PER_KM[mode]),
       calories: Math.round((leg.distance.value / 1000) * CALORIES_PER_KM[mode])
     }

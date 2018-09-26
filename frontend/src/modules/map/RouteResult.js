@@ -46,8 +46,8 @@ const RouteResult = ({ ...rest, context }) => {
   return <RouteResultButton onClick={routeResultClickHandler} isSelected={isSelected}>
     <ul>
       <li><strong>Mode:</strong> {rest.mode}</li>
-      <li><strong>Duration:</strong> {rest.duration}</li>
-      <li><strong>Distance:</strong> {rest.distance}</li>
+      <li><strong>Duration:</strong> {rest.duration.text}</li>
+      <li><strong>Distance:</strong> {rest.distance.text}</li>
       <li><strong>Cost:</strong> &pound;{rest.cost / 100}</li>
       <li><strong>Calories:</strong> {rest.calories}</li>
     </ul>
