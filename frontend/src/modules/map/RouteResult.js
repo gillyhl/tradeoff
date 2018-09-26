@@ -1,17 +1,37 @@
 import React from 'react'
 import styled from 'styled-components'
 import {color} from '../../theme'
+
 const RouteResultButton = styled.section`
-ul {
-  list-style: none;
-  padding: 0.5em;
-}
-ul:hover{
-  background-color: ${color.hover};
-}
-li{
-  padding:0.5em;
-}
+
+  ul {
+    list-style: none;
+    padding: 0.5em;
+    transition: 0.4s background;
+    cursor: pointer;
+    position: relative;
+    height: 10rem;
+
+    ::after {
+      content: '+';
+      font-size: 4rem;
+      float: right;
+      position: absolute;
+      line-height: 10rem;
+      top: 0;
+      right: 1rem;
+    }
+
+    :hover {
+      background-color: ${color.hover};
+    }
+  }
+
+  li{
+    padding:0.5em;
+  }
+
+
 `
 
 const RouteResult = ({ duration, mode, distance, cost, calories }) => {
