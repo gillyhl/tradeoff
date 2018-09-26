@@ -64,4 +64,22 @@ app.get("/directions", async (request, response) => {
   response.json(parseRouteResult(data));
 });
 
+const multiModeCalcs = () => {
+  const reducer = (accumulator, currentValue) => {
+    return {
+      walkingDistance:
+        accumulator.walkingDistance + currentValue.distance.value,
+      walkingDuration: accumulator.walkingDuration + currentValue.duration.value
+    };
+  };
+
+  const walkingLegs = leg.steps.filter(s => s.travel_mode === "WALKING");
+  const { walkingDistance, walkingDuration } = walkingLegs.reduce(reducer, {
+    walkingDistance: 0,
+    walkingDuration: 0
+  });
+
+  console.log(walkingDistance, walkingDuration);
+};
+
 app.listen(3001);
