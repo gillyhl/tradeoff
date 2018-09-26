@@ -4,7 +4,7 @@ import withRouteResultsContext from '../../withRouteResultsContext'
 
 const RouteResultList = ({ context }) => {
   return <div>
-      {context.results && context.results.map((result, i) => <RouteResult {...result} key={i} />)}
+      {context.routeResults && context.routeResults.map((result, i) => <RouteResult {...result} key={i} />)}
     </div>
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {color} from '../../theme'
+import withRouteResultsContext from '../../withRouteResultsContext'
 
 const RouteResultButton = styled.section`
 
@@ -34,16 +35,20 @@ const RouteResultButton = styled.section`
 
 `
 
-const RouteResult = ({ duration, mode, distance, cost, calories }) => {
-  return <RouteResultButton>
+const RouteResult = ({ ...rest, context }) => {
+  const routeResultClickHandler = e => {
+    context.addComparator({...rest})
+  }
+
+  return <RouteResultButton onClick={routeResultClickHandler}>
     <ul>
-      <li><strong>Mode:</strong> {mode}</li>
-      <li><strong>Duration:</strong> {duration}</li>
-      <li><strong>Distance:</strong> {distance}</li>
-      <li><strong>Cost:</strong> &pound;{cost / 100}</li>
-      <li><strong>Calories:</strong> {calories}</li>
+      <li><strong>Mode:</strong> {rest.mode}</li>
+      <li><strong>Duration:</strong> {rest.duration}</li>
+      <li><strong>Distance:</strong> {rest.distance}</li>
+      <li><strong>Cost:</strong> &pound;{rest.cost / 100}</li>
+      <li><strong>Calories:</strong> {rest.calories}</li>
     </ul>
   </RouteResultButton>
 }
 
-export default RouteResult
+export default withRouteResultsContext(RouteResult)

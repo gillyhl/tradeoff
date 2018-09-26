@@ -17,8 +17,8 @@ const StyledWrapper = styled.section`
 
 const Main = ({context}) =>
       <StyledWrapper>
-        {!context.results.length === 0 && <RouteDetails />}
-        {context.results.length === 0 && <RouteDetails />}
+        {!context.routeResults.length === 0 && <RouteDetails />}
+        {context.routeResults.length === 0 && <RouteDetails />}
       </StyledWrapper>
 
 export default withRouteResultsContext (Main)

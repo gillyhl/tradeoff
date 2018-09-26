@@ -20,25 +20,35 @@ class App extends Component {
       })
     }
 
+    this.addComparator = comparator => {
+      this.setState({
+        comparators: [
+          ...this.state.comparators,
+          comparator
+        ]
+      })
+    }
+
     this.clearRouteResults = () => {
       this.setState({
-        routeResults: []
+        routeResults: [],
+        comparators: []
       })
     }
 
     this.state = {
-      routeResults: []
+      routeResults: [],
+      comparators: [],
+      addComparator: this.addComparator,
+      addRouteResult: this.addRouteResult,
+      clearRouteResults: this.clearRouteResults
     }
 
   }
 
   render() {
     return (
-      <RouteResultsContext.Provider value={{
-        results: this.state.routeResults,
-        addRouteResult: this.addRouteResult,
-        clearRouteResults: this.clearRouteResults
-      }}>
+      <RouteResultsContext.Provider value={this.state}>
         <Main />
         <Sidebar />
         <Map />
