@@ -2,7 +2,7 @@ import addSeconds from 'date-fns/add_seconds'
 import distanceInWords from 'date-fns/distance_in_words'
 
 
-export const timeInsights = (comparators) => {
+export const timeInsights = (comparators, days, journeysPerDay = 2) => {
 
   return comparators
     .sort(sortDurationDescending)
@@ -10,7 +10,7 @@ export const timeInsights = (comparators) => {
       .filter(x => x.mode !== comparator.mode)
       .map(comparatorInsight => {
 
-        const deltaInSeconds = (comparatorInsight.duration.value - comparator.duration.value) * 228 * 2
+        const deltaInSeconds = (comparatorInsight.duration.value - comparator.duration.value) * days * journeysPerDay
         const startDate = new Date()
 
         startDate.setHours(0,0,0,0)

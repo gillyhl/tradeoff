@@ -5,6 +5,9 @@ import Main from './modules/layout/Main'
 import Sidebar from './modules/layout/Sidebar'
 import RouteResultsContext from './RouteResultsContext'
 import { timeInsights } from './services/timeInsightService'
+import { costInsights } from './services/costInsightService'
+
+const WORKING_DAYS_PER_YEAR = 228
 
 class App extends Component {
 
@@ -30,11 +33,10 @@ class App extends Component {
       this.setState({
         comparators,
         insights: {
-          time: timeInsights(comparators)
+          time: timeInsights(comparators, WORKING_DAYS_PER_YEAR),
+          cost: costInsights(comparators, WORKING_DAYS_PER_YEAR)
         }
       })
-
-
     }
 
     this.clearRouteResults = () => {

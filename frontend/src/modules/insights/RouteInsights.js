@@ -2,20 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import withRouteResultsContext from '../../withRouteResultsContext'
 
-// const ComparisonGrid = styled.section`
-
-//   display: grid;
-//   grid-template-cols: ${props => props.comparators.length + 1};
-//   grid-template-rows: 4;
-
-// `
-
-// const KeyColumn = styled.div`
-//   grid-cols: 1 / 2;
-// `
-
-// const ComparatorColumn = styled.div`
-// `
+const StyledInsightContainer = styled.section`
+  h1 {
+    font-size: 2em;
+  }
+`
 
 const RouteInsights = ({ context: { comparators, insights } }) => {
 
@@ -23,9 +14,16 @@ const RouteInsights = ({ context: { comparators, insights } }) => {
     return <h1>Select Preferred Travel Methods</h1>
   }
 
-  return <ul>
-    {insights.time.map(i => <li key={i}>{i}</li>)}
-  </ul>
+  return <StyledInsightContainer>
+    <h1>Time Insights</h1>
+    <ul>
+      {insights.time.map(i => <li key={i}>{i}</li>)}
+    </ul>
+    <h1>Cost Insights</h1>
+    <ul>
+      {insights.cost.map(i => <li key={i}>{i}</li>)}
+    </ul>
+  </StyledInsightContainer>
 }
 
 export default withRouteResultsContext(RouteInsights)
