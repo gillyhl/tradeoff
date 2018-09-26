@@ -28,7 +28,7 @@ class RouteDetails extends React.Component {
     return <form onSubmit={e => this.handleSubmit(e)}>
         <h1>Where would you like to go?</h1>
         <label htmlFor="origin">Origin</label>
-        <input id="origin" ref={origin=>this.origin=origin} type='text' defaultValue='ba2 3dq'></input>
+        <input id="origin" ref={origin=>this.origin=origin} type='text' defaultValue='bs3 5ed'></input>
         <label htmlFor="destination">Destination</label>
         <input id="destination" ref={destination=>this.destination=destination} type='text' defaultValue='ba1 2el'></input>
         <button>Go</button>

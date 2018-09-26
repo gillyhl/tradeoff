@@ -4,6 +4,8 @@ import Map from './modules/map/Map'
 import Main from './modules/layout/Main'
 import Sidebar from './modules/layout/Sidebar'
 import RouteResultsContext from './RouteResultsContext'
+import addSeconds from 'date-fns/add_seconds'
+import distanceInWords from 'date-fns/distance_in_words'
 
 class App extends Component {
 
@@ -26,11 +28,16 @@ class App extends Component {
         .sort(sortTime)
         .map((comparator, i, array) => array.filter(x => x.mode !== comparator.mode)
           .map(comparatorInsight => {
-            const delta = comparatorInsight.duration.value - comparator.duration.value
+            const deltaInSeconds = (comparatorInsight.duration.value - comparator.duration.value) * 228
 
-            const isFaster = delta > 0
+            const startDate = new Date()
+            startDate.setHours(0,0,0,0);
+            const endDate = addSeconds(startDate, deltaInSeconds);
 
-            return `${comparator.mode} will ${isFaster ? 'save' : 'cost'} you ${Math.abs(delta)} in comparison to ${comparatorInsight.mode}`
+            const timeString = distanceInWords(startDate, endDate)
+            const isFaster = deltaInSeconds > 0
+
+            return `${comparator.mode} will ${isFaster ? 'save' : 'cost'} you ${timeString} in comparison to ${comparatorInsight.mode}`
           }))
           .reduce((acc, curr) => [ ...acc, ...curr], [])
     }
