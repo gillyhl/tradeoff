@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { color, size } from '../../theme'
 import RouteDetails from '../map/RouteDetails'
-import RouteResultsContext from '../../RouteResultsContext'
+import withRouteResultsContext from '../../withRouteResultsContext'
 
 const StyledWrapper = styled.section`
   background-color: ${color.background};
@@ -15,13 +15,10 @@ const StyledWrapper = styled.section`
   color: ${color.text};
 `
 
-const Main = () =>
-  <RouteResultsContext.Consumer>
-    {({results }) => (
+const Main = ({context}) =>
       <StyledWrapper>
-        {!results.length && <RouteDetails />}
+        {!context.results.length === 0 && <RouteDetails />}
+        {context.results.length === 0 && <RouteDetails />}
       </StyledWrapper>
-    )}
-  </RouteResultsContext.Consumer>
 
-export default Main
+export default withRouteResultsContext (Main)
