@@ -8,7 +8,7 @@ export const co2Insights = (comparators, days, journeysPerDay = 2) => {
 
         const deltaInGrams = (comparatorInsight.co2 - comparator.co2) * days * journeysPerDay
 
-        const deltaInKg = deltaInGrams / 1000
+        const deltaInKg = Math.round((deltaInGrams / 1000) * 100) / 100
 
         const isMoreEnvironmentallyFriendly = deltaInKg > 0
 

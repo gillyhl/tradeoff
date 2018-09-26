@@ -33,14 +33,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/directions', async (request, response) => {
 
-  const {origin, destination, mode}=request.query
-  const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${mode}&key=AIzaSyAWGw_OqX8KLR5HWQS7aryq9CVRdDw_BR4`;
-  const {data} = await axios.get(url)
+  const { origin, destination, mode } = request.query
+  const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${mode}&key=AIzaSyAWGw_OqX8KLR5HWQS7aryq9CVRdDw_BR4&alternatives=true`;
+  const { data } = await axios.get(url)
 
   const parseRouteResult = routeResult => {
+
     const route = routeResult.routes[0]
     const leg = route.legs[0]
+
     return {
+      start_address: leg.start_address,
+      end_address: leg.end_address,
       distance: leg.distance,
       mode,
       duration: leg.duration,

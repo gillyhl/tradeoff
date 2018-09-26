@@ -11,10 +11,14 @@ const StyledInsightContainer = styled.section`
 const RouteInsights = ({ context: { comparators, insights } }) => {
 
   if(comparators.length < 2) {
-    return <h1>Select Preferred Travel Methods</h1>
+    return <h1>Select at least two travel methods</h1>
   }
 
+  const comparator = comparators[0]
+
   return <StyledInsightContainer>
+    <p>For you journey between,</p>
+    <p>{`${comparator.start_address} and ${comparator.end_address}`}</p>
     <h1>Time Insights</h1>
     <ul>
       {insights.time.map(i => <li key={i}>{i}</li>)}
