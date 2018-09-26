@@ -1,11 +1,21 @@
 import React from 'react'
+import styled from 'styled-components'
+import { color, size } from '../../theme'
 import RouteDetails from '../map/RouteDetails'
-import './header.css'
 
-const Header = () => {
-  return <header>
+const StyledHeader = styled.header`
+  background-color: ${color.background};
+  padding: ${size.padding};
+  position: absolute;
+  z-index: 1001;
+  width: calc(100vw - ${size.padding} - ${size.padding});
+  height: ${size.headerHeight};
+  color: ${color.text};
+`
+
+const Header = () =>
+  <StyledHeader>
     <RouteDetails />
-  </header>
-}
+  </StyledHeader>
 
 export default Header

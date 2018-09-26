@@ -1,5 +1,6 @@
 import React from 'react'
-import './sidebar.css'
+import styled from 'styled-components'
+import { size, color } from '../../theme'
 import RouteResultList from '../map/RouteResultList'
 
 const results = [
@@ -21,10 +22,20 @@ const results = [
   }
 ]
 
-const Sidebar = () => {
-  return <section className='sidebar'>
+const StyledSidebar = styled.section`
+  position: absolute;
+  height: calc(100vh - ${size.padding} - ${size.padding});
+  width: 20%;
+  min-width: 200px;
+  z-index: 1001;
+  color: ${color.text};
+  background-color: ${color.background};
+  top: calc(${size.headerHeight} + ${size.padding} + ${size.padding});
+`
+
+const Sidebar = () =>
+  <StyledSidebar>
     <RouteResultList results={results} />
-  </section>
-}
+  </StyledSidebar>
 
 export default Sidebar
