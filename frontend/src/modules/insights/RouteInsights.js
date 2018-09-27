@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import withRouteResultsContext from '../../withRouteResultsContext'
+import Insights from './Insights'
 
 const StyledInsightContainer = styled.section`
   h1 {
@@ -19,24 +20,9 @@ const RouteInsights = ({ context: { comparators, insights } }) => {
     <StyledInsightContainer>
       <p>For you journey between,</p>
       <p>{`${comparator.start_address} and ${comparator.end_address}`}</p>
-      <h1>Time Insights</h1>
-      <ul>
-        {insights.time.map(i => (
-          <li key={i}>{i}</li>
-        ))}
-      </ul>
-      <h1>Cost Insights</h1>
-      <ul>
-        {insights.cost.map(i => (
-          <li key={i}>{i}</li>
-        ))}
-      </ul>
-      <h1>Environmental Insights</h1>
-      <ul>
-        {insights.co2.map(i => (
-          <li key={i}>{i}</li>
-        ))}
-      </ul>
+      {Object.keys(insights).map(comparator => (
+        <Insights comparatorType={comparator} insights={insights} />
+      ))}
     </StyledInsightContainer>
   )
 }

@@ -42,7 +42,6 @@ app.get("/directions", async (request, response) => {
   morningCommuteDate.setMilliseconds(0);
   const departureTime = morningCommuteDate.getTime() / 1000;
 
-  const { origin, destination, mode } = request.query
   const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${mode}&departure_time=${departureTime}&traffic_model=pessimistic&key=${process.env.GOOGLE_API_KEY}&alternatives=true`;
   const { data } = await axios.get(url);
 
