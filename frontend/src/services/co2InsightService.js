@@ -1,4 +1,6 @@
 import insightSortService from './insightSortService'
+
+const sortCo2Descending = insightSortService('co2')
 export const co2Insights = (comparators, days, journeysPerDay = 2) =>
   comparators
     .sort(sortCo2Descending)
@@ -10,15 +12,17 @@ export const co2Insights = (comparators, days, journeysPerDay = 2) =>
 
         const isMoreEnvironmentallyFriendly = deltaInKg > 0
 
-        return (
-          isMoreEnvironmentallyFriendly &&
-          `${comparator.mode} will ${
-            isMoreEnvironmentallyFriendly ? 'save' : 'cost'
-          } the environment ${deltaInKg} CO2/KG in comparison to ${comparatorInsight.mode}`
-        )
+        return {
+          ...comparator,
+          text:
+            isMoreEnvironmentallyFriendly &&
+            `${comparator.mode} will ${
+              isMoreEnvironmentallyFriendly ? 'save' : 'cost'
+            } the environment ${deltaInKg} CO2/KG in comparison to ${comparatorInsight.mode}`
+        }
       })
     )
     .reduce((acc, curr) => [...acc, ...curr], [])
     .filter(x => x)
 
-const sortCo2Descending = insightSortService('co2')
+export default co2Insights

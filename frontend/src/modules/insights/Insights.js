@@ -8,9 +8,7 @@ class Insights extends Component {
       <div>
         <h1>{comparatorType} Insights</h1>
         <ul>
-          {insights[comparatorType].map(i => (
-            <li key={i}>{i}</li>
-          ))}
+          {insights[comparatorType].map(i => console.log(i) && <li key={i.text}>{i.text}</li>)}
         </ul>
         <InsightModeGraph mode="walking" percentage={50} />
       </div>

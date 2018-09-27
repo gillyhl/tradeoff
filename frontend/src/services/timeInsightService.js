@@ -1,6 +1,8 @@
-import insightSortService from './insightSortService'
 import addSeconds from 'date-fns/add_seconds'
 import distanceInWords from 'date-fns/distance_in_words'
+import insightSortService from './insightSortService'
+
+const sortDurationDescending = insightSortService('duration', 'value')
 
 export const timeInsights = (comparators, days, journeysPerDay = 2) =>
   comparators
@@ -17,15 +19,17 @@ export const timeInsights = (comparators, days, journeysPerDay = 2) =>
         const timeString = distanceInWords(startDate, endDate)
         const isFaster = deltaInSeconds > 0
 
-        return (
-          isFaster &&
-          `${comparator.mode} will ${
-            isFaster ? 'save' : 'cost'
-          } you ${timeString} in comparison to ${comparatorInsight.mode}`
-        )
+        return {
+          ...comparator,
+          text:
+            isFaster &&
+            `${comparator.mode} will ${
+              isFaster ? 'save' : 'cost'
+            } you ${timeString} in comparison to ${comparatorInsight.mode}`
+        }
       })
     )
     .reduce((acc, curr) => [...acc, ...curr], [])
     .filter(x => x)
 
-const sortDurationDescending = insightSortService('duration', 'value')
+export default timeInsights
