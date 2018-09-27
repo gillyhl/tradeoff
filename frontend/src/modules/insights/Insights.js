@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import InsightModeGraph from './InsightModeGraph'
 
 class Insights extends Component {
   render() {
@@ -11,6 +12,7 @@ class Insights extends Component {
             <li key={i}>{i}</li>
           ))}
         </ul>
+        <InsightModeGraph mode="walking" percentage={50} />
       </div>
     )
   }

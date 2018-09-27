@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {color} from '../../theme'
 import withRouteResultsContext from '../../withRouteResultsContext'
+import emojiModesConstant from '../../emojiModesConstant'
 
 const RouteResultButton = styled.section`
 
@@ -39,12 +40,6 @@ const RouteResultButton = styled.section`
 const StyledEmoji=styled.li`
   font-size: 2rem;
 `
-const modeEmoji = {
-  driving:"🚗",
-  walking:"👣",
-  bicycling:"🚴",
-  transit:"🚅"
-}
 
 const RouteResult = ({ ...rest, context }) => {
   const routeResultClickHandler = e => {
@@ -55,7 +50,7 @@ const RouteResult = ({ ...rest, context }) => {
 
   return <RouteResultButton onClick={routeResultClickHandler} isSelected={isSelected}>
     <ul>
-      <StyledEmoji>{modeEmoji[rest.mode]}</StyledEmoji>
+      <StyledEmoji>{emojiModesConstant[rest.mode]}</StyledEmoji>
       <li><strong>Duration:</strong> {rest.duration.text}</li>
       <li><strong>Distance:</strong> {rest.distance.text}</li>
       <li><strong>Cost:</strong> &pound;{rest.cost / 100}</li>
