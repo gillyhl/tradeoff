@@ -3,10 +3,12 @@ import distanceInWords from 'date-fns/distance_in_words'
 import insightSortService from './insightSortService'
 
 export const timeInsights = (comparators, days, journeysPerDay = 2) => ({
-  values: comparators.sort(sortDurationDescending).map((comparator, i, array)=>{
+  values: comparators.sort(sortDurationDescending).map((comparator, i, array) => ({
     mode: comparator.mode,
-    percentage: Math.floor(comparator.duration.value*100/array[0].duration.value)
-  }),
+    percentage: !array[0].duration.value
+      ? 0
+      : Math.floor((comparator.duration.value * 100) / array[0].duration.value)
+  })),
   text: comparators
     .sort(sortDurationDescending)
     .map((comparator, i, array) =>

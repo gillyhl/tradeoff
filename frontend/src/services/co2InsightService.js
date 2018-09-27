@@ -2,6 +2,10 @@ import insightSortService from './insightSortService'
 
 const sortCo2Descending = insightSortService('co2')
 export const co2Insights = (comparators, days, journeysPerDay = 2) => ({
+  values: comparators.sort(sortCo2Descending).map((comparator, i, array) => ({
+    mode: comparator.mode,
+    percentage: !array[0].co2 ? 0 : Math.floor((comparator.co2 * 100) / array[0].co2)
+  })),
   text: comparators
     .sort(sortCo2Descending)
     .map((comparator, i, array) =>

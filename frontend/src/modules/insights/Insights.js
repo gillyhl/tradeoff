@@ -4,8 +4,6 @@ import InsightModeGraph from './InsightModeGraph'
 class Insights extends Component {
   render() {
     const { comparatorType, insights } = this.props
-    // console.log(comparatorType)
-    // console.log(insights)
     return (
       <div>
         <h1>{comparatorType} Insights</h1>
@@ -14,7 +12,9 @@ class Insights extends Component {
             <li key={i}>{i}</li>
           ))}
         </ul>
-        <InsightModeGraph mode="walking" percentage={50} />
+        {insights[comparatorType].values.map(i => (
+          <InsightModeGraph mode={i.mode} percentage={i.percentage} />
+        ))}
       </div>
     )
   }
