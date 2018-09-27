@@ -15,6 +15,9 @@ const ModeGraphRow = styled.div`
   }
 `
 
+const StyledParagraph = styled.p`
+  color: ${color.primary};
+`
 class Insights extends Component {
   render() {
     const { comparatorType, insights } = this.props
@@ -26,7 +29,7 @@ class Insights extends Component {
             <InsightModeGraph mode={comparatorType} percentage={i.percentage} key={i.mode} />
           </ModeGraphRow>
         ))}
-        <p>{insights[comparatorType].text[0]}</p>
+        <StyledParagraph>{insights[comparatorType].text[0]}</StyledParagraph>
       </div>
     )
   }

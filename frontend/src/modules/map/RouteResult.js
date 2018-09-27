@@ -14,7 +14,7 @@ const RouteResultButton = styled.section`
     cursor: pointer;
     position: relative;
     height: 13rem;
-    background-color: ${props => props.isSelected ? color.hover : 'inherit'};
+    background-color: ${props => props.isSelected ? color.primary : 'inherit'};
 
     ::after {
       content: ${props => props.isSelected ? '\'➖\'' : '\'➕\''};

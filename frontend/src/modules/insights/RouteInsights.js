@@ -21,10 +21,14 @@ const RouteInsights = ({ context: { comparators, insights } }) => {
 
   return (
     <StyledInsightContainer>
-      <p>For your journey between {`${comparator.start_address} and ${comparator.end_address}`}</p>
-      {Object.keys(insights).map(comparator => (
-        <Insights comparatorType={comparator} insights={insights} key={comparator} />
-      ))}
+      <h1>
+        For your journey between {`${comparator.start_address} and ${comparator.end_address}`}
+      </h1>
+      {Object.keys(insights)
+        .filter(comparator => insights[comparator].values.some(value => value.percentage))
+        .map(comparator => (
+          <Insights comparatorType={comparator} insights={insights} key={comparator} />
+        ))}
     </StyledInsightContainer>
   )
 }
