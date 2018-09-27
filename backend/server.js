@@ -6,7 +6,7 @@ var axios = require('axios')
 require('dotenv').config()
 
 var app = express()
-
+const port = process.env.PORT || 3001;
 const PENCE_PER_KM = {
   driving: 25,
   walking: 0,
@@ -31,7 +31,7 @@ const CO2_PER_KM = {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, '../frontend/build')))
 
 app.get("/directions", async (request, response) => {
   const { origin, destination, mode } = request.query;
@@ -84,4 +84,4 @@ const multiModeCalcs = () => {
   console.log(walkingDistance, walkingDuration);
 };
 
-app.listen(3001);
+app.listen(port);
