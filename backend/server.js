@@ -1,9 +1,11 @@
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var axios = require("axios");
 
-var app = express();
+var express = require('express')
+var path = require('path')
+var cookieParser = require('cookie-parser')
+var axios = require('axios')
+require('dotenv').config()
+
+var app = express()
 
 const PENCE_PER_KM = {
   driving: 25,
@@ -26,10 +28,10 @@ const CO2_PER_KM = {
   bicycling: 0
 };
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.get("/directions", async (request, response) => {
   const { origin, destination, mode } = request.query;
@@ -40,7 +42,8 @@ app.get("/directions", async (request, response) => {
   morningCommuteDate.setMilliseconds(0);
   const departureTime = morningCommuteDate.getTime() / 1000;
 
-  const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${mode}&departure_time=${departureTime}&traffic_model=pessimistic&key=AIzaSyAWGw_OqX8KLR5HWQS7aryq9CVRdDw_BR4&alternatives=true`;
+  const { origin, destination, mode } = request.query
+  const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${mode}&departure_time=${departureTime}&traffic_model=pessimistic&key=${process.env.GOOGLE_API_KEY}&alternatives=true`;
   const { data } = await axios.get(url);
 
   const parseRouteResult = routeResult => {

@@ -12,7 +12,6 @@ const StyledRouteDetails = styled.form`
   input {
     margin: 0.5em 1em;
     padding: 0.5em;
-
   }
 
   button {
@@ -24,9 +23,7 @@ const StyledRouteDetails = styled.form`
   }
 `
 
-
 class RouteDetails extends React.Component {
-
   handleSubmit(e) {
     const { addRouteResult, clearRouteResults } = this.props.context
 
@@ -38,7 +35,6 @@ class RouteDetails extends React.Component {
 
     const modes = ['driving', 'walking', 'transit', 'bicycling']
     modes.map(async mode => {
-
       const url = `http://localhost:3000/directions?origin=${origin}&destination=${destination}&mode=${mode}`
 
       const response = await fetch(url)
@@ -48,17 +44,27 @@ class RouteDetails extends React.Component {
   }
 
   render() {
-    return <StyledRouteDetails onSubmit={e => this.handleSubmit(e)}>
+    return (
+      <StyledRouteDetails onSubmit={e => this.handleSubmit(e)}>
         <h1>What route do you want to examine??</h1>
         <label htmlFor="origin">Origin</label>
-        <input id="origin" ref={origin=>this.origin=origin} type='text' defaultValue='bs3 5ed'></input>
+        <input
+          id="origin"
+          ref={origin => (this.origin = origin)}
+          type="text"
+          defaultValue="bs3 5ed"
+        />
         <label htmlFor="destination">Destination</label>
-        <input id="destination" ref={destination=>this.destination=destination} type='text' defaultValue='ba1 2el'></input>
+        <input
+          id="destination"
+          ref={destination => (this.destination = destination)}
+          type="text"
+          defaultValue="ba1 2el"
+        />
         <button>Go</button>
       </StyledRouteDetails>
+    )
   }
 }
-
-
 
 export default withRouteResultsContext(RouteDetails)
