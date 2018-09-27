@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import withRouteResultsContext from '../../withRouteResultsContext'
 import Insights from './Insights'
+import { size } from '../../theme'
 
 const StyledInsightContainer = styled.section`
-  max-height: 100vh;
+  max-height: calc(100vh - ${size.padding} - ${size.padding});
   overflow-y: scroll;
 
   h1 {
