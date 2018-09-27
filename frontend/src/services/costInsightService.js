@@ -1,3 +1,4 @@
+import insightSortService from './insightSortService'
 export const costInsights = (comparators, days, journeysPerDay = 2) => {
 
   return comparators
@@ -18,4 +19,4 @@ export const costInsights = (comparators, days, journeysPerDay = 2) => {
       .filter(x => x)
 }
 
-const sortDurationDescending = (a,b) => b.duration.value - a.duration.value
+const sortDurationDescending = (a,b) => insightSortService('cost', 'value')

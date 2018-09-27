@@ -1,3 +1,4 @@
+import insightSortService from './insightSortService'
 export const co2Insights = (comparators, days, journeysPerDay = 2) => {
 
   return comparators
@@ -18,4 +19,4 @@ export const co2Insights = (comparators, days, journeysPerDay = 2) => {
       .filter(x => x)
 }
 
-const sortCo2Descending = (a,b) => b.co2 - a.co2
+const sortCo2Descending = insightSortService('co2')
