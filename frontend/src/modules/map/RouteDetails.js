@@ -46,7 +46,7 @@ class RouteDetails extends React.Component {
   render() {
     return (
       <StyledRouteDetails onSubmit={e => this.handleSubmit(e)}>
-        <h1>What route do you want to examine??</h1>
+        <h1>What is your commute?</h1>
         <label htmlFor="origin">Origin</label>
         <input
           id="origin"

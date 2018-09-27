@@ -7,6 +7,7 @@ import RouteResultsContext from './RouteResultsContext'
 import { timeInsights } from './services/timeInsightService'
 import { costInsights } from './services/costInsightService'
 import { co2Insights } from './services/co2InsightService'
+import { healthInsights } from './services/healthInsightService'
 
 const WORKING_DAYS_PER_YEAR = 228
 
@@ -32,7 +33,8 @@ class App extends Component {
         insights: {
           time: timeInsights(comparators, WORKING_DAYS_PER_YEAR),
           cost: costInsights(comparators, WORKING_DAYS_PER_YEAR),
-          co2: co2Insights(comparators, WORKING_DAYS_PER_YEAR)
+          co2: co2Insights(comparators, WORKING_DAYS_PER_YEAR),
+          health: healthInsights(comparators, WORKING_DAYS_PER_YEAR)
         }
       })
     }

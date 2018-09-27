@@ -21,8 +21,7 @@ const RouteInsights = ({ context: { comparators, insights } }) => {
 
   return (
     <StyledInsightContainer>
-      <p>For you journey between,</p>
-      <p>{`${comparator.start_address} and ${comparator.end_address}`}</p>
+      <p>For your journey between {`${comparator.start_address} and ${comparator.end_address}`}</p>
       {Object.keys(insights).map(comparator => (
         <Insights comparatorType={comparator} insights={insights} key={comparator} />
       ))}
