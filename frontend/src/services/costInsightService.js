@@ -1,6 +1,5 @@
-export const costInsights = (comparators, days, journeysPerDay = 2) => {
-
-  return comparators
+import insightSortService from './insightSortService'
+export const costInsights = (comparators, days, journeysPerDay = 2) => comparators
     .sort(sortCostDescending)
     .map((comparator, i, array) => array
       .filter(x => x.mode !== comparator.mode)
@@ -23,4 +22,4 @@ export const costInsights = (comparators, days, journeysPerDay = 2) => {
     .reduce((acc, curr) => [...acc, ...curr], [])
     .filter(x => x)
 
-const sortCostDescending = (a,b) => b.cost.value - a.cost.value
+const sortCostDescending = (a,b) => insightSortService('cost', 'value')

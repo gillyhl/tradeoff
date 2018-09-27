@@ -1,3 +1,4 @@
+import insightSortService from './insightSortService'
 import addSeconds from 'date-fns/add_seconds'
 import distanceInWords from 'date-fns/distance_in_words'
 
@@ -27,4 +28,4 @@ export const timeInsights = (comparators, days, journeysPerDay = 2) =>
     .reduce((acc, curr) => [...acc, ...curr], [])
     .filter(x => x)
 
-const sortDurationDescending = (a, b) => b.duration.value - a.duration.value
+const sortDurationDescending = insightSortService('duration', 'value')
