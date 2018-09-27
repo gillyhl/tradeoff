@@ -1,8 +1,9 @@
 import addSeconds from 'date-fns/add_seconds'
 import distanceInWords from 'date-fns/distance_in_words'
 import insightSortService from './insightSortService'
+import timePeriodConstants from '../timePeriodConstants'
 
-export const timeInsights = (comparators, days, journeysPerDay = 2) => ({
+export const timeInsights = (comparators, timePeriod, journeysPerDay = 2) => ({
   values: comparators.sort(sortDurationDescending).map((comparator, i, array) => ({
     mode: comparator.mode,
     percentage: !array[0].duration.value
@@ -13,6 +14,7 @@ export const timeInsights = (comparators, days, journeysPerDay = 2) => ({
     .sort(sortDurationDescending)
     .map((comparator, i, array) =>
       array.filter(x => x.mode !== comparator.mode).map(comparatorInsight => {
+        const days = timePeriodConstants[timePeriod]
         const deltaInSeconds =
           (comparatorInsight.duration.value - comparator.duration.value) * days * journeysPerDay
         const startDate = new Date()
@@ -25,9 +27,9 @@ export const timeInsights = (comparators, days, journeysPerDay = 2) => ({
 
         return (
           isFaster &&
-          `${comparator.mode} will ${
+          `${timePeriod}, ${comparator.mode} will ${
             isFaster ? 'save' : 'cost'
-          } you ${timeString} in comparison to ${comparatorInsight.mode}`
+          } you ${timeString} in comparison to ${comparatorInsight.mode} annually`
         )
       })
     )

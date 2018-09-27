@@ -31,10 +31,10 @@ class App extends Component {
       this.setState({
         comparators,
         insights: {
-          time: timeInsights(comparators, WORKING_DAYS_PER_YEAR),
-          cost: costInsights(comparators, WORKING_DAYS_PER_YEAR),
-          co2: co2Insights(comparators, WORKING_DAYS_PER_YEAR),
-          health: healthInsights(comparators, WORKING_DAYS_PER_YEAR)
+          time: timeInsights(comparators, 'Annually'),
+          cost: costInsights(comparators, 'Annually'),
+          co2: co2Insights(comparators, 'Annually'),
+          health: healthInsights(comparators, 'Annually')
         }
       })
     }

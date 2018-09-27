@@ -1,7 +1,8 @@
 import insightSortService from './insightSortService'
+import timePeriodConstants from '../timePeriodConstants'
 
 const sortCo2Descending = insightSortService('co2')
-export const co2Insights = (comparators, days, journeysPerDay = 2) => ({
+export const co2Insights = (comparators, timePeriod, journeysPerDay = 2) => ({
   values: comparators.sort(sortCo2Descending).map((comparator, i, array) => ({
     mode: comparator.mode,
     percentage: !array[0].co2 ? 0 : Math.floor((comparator.co2 * 100) / array[0].co2)
@@ -10,6 +11,7 @@ export const co2Insights = (comparators, days, journeysPerDay = 2) => ({
     .sort(sortCo2Descending)
     .map((comparator, i, array) =>
       array.filter(x => x.mode !== comparator.mode).map(comparatorInsight => {
+        const days = timePeriodConstants[timePeriod]
         const deltaInGrams = (comparatorInsight.co2 - comparator.co2) * days * journeysPerDay
 
         const deltaInKg = Math.round((deltaInGrams / 1000) * 100) / 100
@@ -18,9 +20,9 @@ export const co2Insights = (comparators, days, journeysPerDay = 2) => ({
 
         return (
           isMoreEnvironmentallyFriendly &&
-          `${comparator.mode} will ${
+          `${timePeriod}, ${comparator.mode} will ${
             isMoreEnvironmentallyFriendly ? 'save' : 'cost'
-          } the environment ${deltaInKg} CO2/KG in comparison to ${comparatorInsight.mode}`
+          } the environment ${deltaInKg} CO2/KG in comparison to ${comparatorInsight.mode} annually`
         )
       })
     )
