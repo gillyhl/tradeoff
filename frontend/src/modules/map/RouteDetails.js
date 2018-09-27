@@ -35,7 +35,7 @@ class RouteDetails extends React.Component {
 
     const modes = ['driving', 'walking', 'transit', 'bicycling']
     modes.map(async mode => {
-      const url = `http://localhost:3000/directions?origin=${origin}&destination=${destination}&mode=${mode}`
+      const url = `/directions?origin=${origin}&destination=${destination}&mode=${mode}`
 
       const response = await fetch(url)
 

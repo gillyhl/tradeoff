@@ -1,0 +1,19 @@
+{
+  "name": "tradeoff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd ./frontend && npm install && npm run build && cd ../backend && npm install && npm run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gillyhl@github.com/gillyhl/tradeoff.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gillyhl/tradeoff/issues"
+  },
+  "homepage": "https://github.com/gillyhl/tradeoff#readme"
+}

@@ -31,7 +31,7 @@ const CO2_PER_KM = {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, '../frontend/build')))
 
 app.get("/directions", async (request, response) => {
   const { origin, destination, mode } = request.query;
