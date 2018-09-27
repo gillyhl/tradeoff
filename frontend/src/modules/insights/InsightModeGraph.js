@@ -7,7 +7,7 @@ const InsightModeGraphWrapper = styled.div`
   flex-wrap: wrap;
   font-size: 2rem;
   div {
-    margin: 0.5rem;
+    margin-left: 0.5rem;
   }
 `
 

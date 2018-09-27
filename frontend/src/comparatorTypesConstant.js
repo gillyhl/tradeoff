@@ -1,6 +1,6 @@
 export default {
   time: '🕘',
   cost: '💰',
-  co2: '🐄',
+  co2: '🐼',
   health: '🍔'
 }
