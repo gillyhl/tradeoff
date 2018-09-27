@@ -22,4 +22,4 @@ export const costInsights = (comparators, days, journeysPerDay = 2) => comparato
     .reduce((acc, curr) => [...acc, ...curr], [])
     .filter(x => x)
 
-const sortDurationDescending = (a,b) => insightSortService('cost', 'value')
+const sortCostDescending = (a,b) => insightSortService('cost', 'value')
