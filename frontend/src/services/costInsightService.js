@@ -1,12 +1,10 @@
 import insightSortService from './insightSortService'
 
-const sortCostDescending = (a, b) => insightSortService('cost', 'value')
+const sortCostDescending = insightSortService('cost')
 export const costInsights = (comparators, days, journeysPerDay = 2) => ({
   values: comparators.sort(sortCostDescending).map((comparator, i, array) => ({
     mode: comparator.mode,
-    percentage: !array[0].cost.value
-      ? 0
-      : Math.floor((comparator.cost.value * 100) / array[0].cost.value)
+    percentage: !array[0].cost ? 0 : Math.floor((comparator.cost * 100) / array[0].cost)
   })),
   text: comparators
     .sort(sortCostDescending)

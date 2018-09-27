@@ -4,6 +4,9 @@ import withRouteResultsContext from '../../withRouteResultsContext'
 import Insights from './Insights'
 
 const StyledInsightContainer = styled.section`
+  max-height: 100vh;
+  overflow-y: scroll;
+
   h1 {
     font-size: 2em;
   }
