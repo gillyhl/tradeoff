@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cd ./frontend && npm install && npm run build && cd ../backend && npm install && npm run serve"
+    "postinstall": "cd ./frontend && npm install && npm run build && cd ../backend && npm install",
+    "start": "cd ../backend && npm run serve"
   },
   "repository": {
     "type": "git",
