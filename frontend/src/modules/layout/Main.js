@@ -16,11 +16,10 @@ const StyledWrapper = styled.section`
   color: ${color.text};
 `
 
-const Main = ({ context }) =>
+const Main = ({ context }) => (
   <StyledWrapper>
-    {context.routeResults.length === 0 ?
-      <RouteDetails /> :
-      <RouteInsights />}
+    {context.routeResults.length === 0 ? <RouteDetails /> : <RouteInsights />}
   </StyledWrapper>
+)
 
 export default withRouteResultsContext(Main)
