@@ -1,20 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
-import emojiModesConstant from '../../emojiModesConstant'
+import comparatorTypeConstant from '../../comparatorTypesConstant'
 
 const InsightModeGraphWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  font-size: 2rem;
+  div {
+    margin: 0.5rem;
+  }
 `
 
 const InsightModeGraph = ({ mode, percentage }) => (
   <InsightModeGraphWrapper>
     {Array.from(
       {
-        length: percentage
+        length: percentage / 10
       },
       (item, index) => (
-        <div key={index}>{emojiModesConstant[mode]}</div>
+        <div key={index}>{comparatorTypeConstant[mode]}</div>
       )
     )}
   </InsightModeGraphWrapper>
