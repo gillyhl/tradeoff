@@ -1,7 +1,7 @@
 export const costInsights = (comparators, days, journeysPerDay = 2) => {
 
   return comparators
-    .sort(sortDurationDescending)
+    .sort(sortCostDescending)
     .map((comparator, i, array) => array
       .filter(x => x.mode !== comparator.mode)
       .map(comparatorInsight => {
@@ -18,4 +18,4 @@ export const costInsights = (comparators, days, journeysPerDay = 2) => {
       .filter(x => x)
 }
 
-const sortDurationDescending = (a,b) => b.duration.value - a.duration.value
+const sortCostDescending = (a,b) => b.cost.value - a.cost.value
