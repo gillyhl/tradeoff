@@ -14,9 +14,10 @@ const StyledSidebar = styled.section`
   background-color: ${color.background};
 `
 
-const Sidebar = () =>
+const Sidebar = () => (
   <StyledSidebar>
     <RouteResultList />
   </StyledSidebar>
+)
 
 export default Sidebar

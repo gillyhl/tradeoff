@@ -12,10 +12,15 @@ export const costInsights = (comparators, days, journeysPerDay = 2) => {
 
         const isCheaper = deltaInPence > 0
 
-        return isCheaper && `${comparator.mode} will ${isCheaper ? 'save' : 'cost'} you £${deltaInPounds} in comparison to ${comparatorInsight.mode}`
-      }))
-      .reduce((acc, curr) => [ ...acc, ...curr], [])
-      .filter(x => x)
-}
+        return (
+          isCheaper &&
+          `${comparator.mode} will ${
+            isCheaper ? 'save' : 'cost'
+          } you £${deltaInPounds} in comparison to ${comparatorInsight.mode}`
+        )
+      })
+    )
+    .reduce((acc, curr) => [...acc, ...curr], [])
+    .filter(x => x)
 
 const sortCostDescending = (a,b) => b.cost.value - a.cost.value
