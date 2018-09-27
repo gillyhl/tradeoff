@@ -4,6 +4,10 @@ import InsightModeGraph from './InsightModeGraph'
 import emojiModesConstant from '../../emojiModesConstant'
 import { color } from '../../theme'
 
+const StyledInsightWrapper = styled.div`
+  margin-bottom: 4rem;
+`
+
 const ModeGraphRow = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -22,7 +26,7 @@ class Insights extends Component {
   render() {
     const { comparatorType, insights } = this.props
     return (
-      <div>
+      <StyledInsightWrapper>
         {insights[comparatorType].values.map(i => (
           <ModeGraphRow>
             <div className="key">{emojiModesConstant[i.mode]}</div>
@@ -30,7 +34,7 @@ class Insights extends Component {
           </ModeGraphRow>
         ))}
         <StyledParagraph>{insights[comparatorType].text[0]}</StyledParagraph>
-      </div>
+      </StyledInsightWrapper>
     )
   }
 }
